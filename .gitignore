@@ -1,0 +1,45 @@
+```
+# Compiled and build artifacts
+*.o
+*.obj
+*.out
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.srec
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+
+# Build directories
+build/
+dist/
+target/
+cmake-build-*/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+```
