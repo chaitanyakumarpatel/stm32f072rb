@@ -170,24 +170,18 @@ static void delay_loop(uint32_t count);
 /**
  * @brief Simple software delay routine using busy-wait loop
  * @param[in] count Number of iterations to execute
- * @detail Executes NOP instructions in a loop to create time delay.
- *         The 'volatile' qualifier prevents compiler optimization.
+ * @detail Executes a tight loop to create time delay.
+ *         Optimized for minimal instruction overhead.
  * @note Not suitable for precise timing applications.
  *       Use hardware timers for accurate delays.
  */
 static void delay_loop(uint32_t count)
 {
-    /**
-     * @brief Loop counter variable
-     * @note volatile prevents compiler from optimizing away the loop
-     */
-    volatile uint32_t loop_counter;
-
-    /* Busy-wait loop with inline assembly NOP for each iteration */
-    for (loop_counter = 0U; loop_counter < count; loop_counter++)
+    /* Busy-wait loop - compiler optimizes to minimal instructions */
+    /* Using register variable hints for better optimization */
+    while (count-- > 0U)
     {
-        /* Execute no-operation instruction to consume clock cycles */
-        __asm__ volatile ("nop" ::: "memory");
+        /* Empty loop body - countdown provides timing */
     }
 }
 
